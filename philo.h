@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 11:04:48 by eunji             #+#    #+#             */
-/*   Updated: 2021/12/18 21:24:40 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/20 21:32:05 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ typedef struct s_info
 
 typedef enum e_state
 {
-	THINKING,
 	PICKUP,
 	EATING,
 	SLEEPING,
+	THINKING,
 	FULFILL,
 	DEAD
 }	t_state;
@@ -57,6 +57,9 @@ typedef struct s_philo
 	t_info		*info;
 }	t_philo;
 
+/* message.c */
+bool	print_message(t_philo *philo, t_state state);
+
 /* action.c */
 bool	philo_pickup(t_philo *philo);
 bool	philo_eat(t_philo *philo);
@@ -66,7 +69,7 @@ bool	philo_think(t_philo *philo);
 
 /* time.c */
 bool	get_time(long long *curr);
-bool	spend_time(long long *start, long long *end);
+bool	spend_time(long long start, long long timeunit);
 
 /* free.c */
 bool	err_clear_info(t_info *info);

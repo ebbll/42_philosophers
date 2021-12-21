@@ -6,13 +6,13 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 17:22:27 by eunlee            #+#    #+#             */
-/*   Updated: 2021/12/18 17:34:01 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/20 21:31:05 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*philo_life(void *arg_philo)
+bool	philo_life(void *arg_philo)
 {
 	t_philo	*philo;
 
@@ -28,5 +28,5 @@ void	*philo_life(void *arg_philo)
 			break;
 	}
 	pthread_mutex_unlock(&(philo->info->terminate));
-	return (NULL);
+	return (true);
 }

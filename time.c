@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:50:22 by eunji             #+#    #+#             */
-/*   Updated: 2021/12/18 21:24:33 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/20 20:43:06 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ bool	get_time(long long *curr)
 	return (true);
 }
 
-bool	spend_time(long long *start, long long *timeunit)
+bool	spend_time(long long start, long long timeunit)
 {
 	long long	curr;
 
-	if (!start)
+	if (!start || !get_time(&start))
 		return (false);
 	while (true)
 	{
 		if (!get_time(&curr))
 			return (false);
-		if (curr - *start >= *timeunit)
+		if (curr - start >= timeunit)
 			break ;
 		if (usleep(10) == -1)
 			return (false);
