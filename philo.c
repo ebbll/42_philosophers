@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 11:05:54 by eunji             #+#    #+#             */
-/*   Updated: 2021/12/18 17:20:45 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/22 14:09:47 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ bool	start_eating(t_info *info, t_philo *philo)
 
 	if (!info || !philo)
 		return (false);
-	if (pthread_mutex_lock(&(info->terminate)) || !get_time(&(info->start_time)))
+	if (pthread_mutex_lock(&(info->terminate)) \
+		|| !get_time(&(info->start_time)))
 		return (false);
 	i = 0;
 	while (i < info->num_philo)
@@ -52,9 +53,11 @@ bool	start_eating(t_info *info, t_philo *philo)
 		philo[i].left_fork = i;
 		philo[i].right_fork = (i + 1) % info->num_philo;
 		philo[i].info = info;
-		if (pthread_create() || pthread_detach())
+		if (pthread_create(&(philo[i].th_philo), NULL, philo_life, \
+			(void *)(&philo[i])) || pthread_detach(philo[i].th_philo))
 			return (false);
-		if (pthread_create() || pthread_detach())
+		if (pthread_create(&(philo[i].th_monitor), NULL, monitor, \
+			(void *)(&philo[i])) || pthread_detach(philo[i].th_monitor))
 			return (false);
 	}
 	if (pthread_mutex_lock(&(info->terminate)))
@@ -69,27 +72,8 @@ int	main(int argc, char **argv)
 
 	philo = NULL;
 	if (!setup(argc, argv, &info, &philo))
-		return (에러처리함수);
-	if (!start_eat(&info, philo))
-		return (에러처리함수);
-	return (0);
+		return (clear_all(&info, &philo, -1));
+	if (!start_eating(&info, philo))
+		return (clear_all(&info, &philo, -1));
+	return (clear_all(&info, &philo, 0));
 }
-
-// 1. state function (5개)
-// 2. spend_time
-// 3. print
-/*
-	print mutex lock
-	printf
-	print mutex unlock
-
-	//lock or unlock 실패 시 return bool
-*/
-
-// 4. monitoring
-/*
-처음에 바로 시작을 하면
-
-*/
-
-// 5. free with exit

@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 11:04:48 by eunji             #+#    #+#             */
-/*   Updated: 2021/12/20 21:32:05 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/22 13:38:56 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ typedef struct s_philo
 	t_info		*info;
 }	t_philo;
 
+/* monitor.c */
+void	*monitor(void *arg_philo);
+
+/* life.c */
+void	*philo_life(void *arg_philo);
+
 /* message.c */
 bool	print_message(t_philo *philo, t_state state);
 
@@ -72,9 +78,7 @@ bool	get_time(long long *curr);
 bool	spend_time(long long start, long long timeunit);
 
 /* free.c */
-bool	err_clear_info(t_info *info);
-bool	err_clear_all(t_info *info, t_philo *philo);
-bool	clear_all(t_info *info, t_philo *philo);
+int		clear_all(t_info *info, t_philo **philo, int ret);
 
 /* parsing.c */
 bool	ft_atoi(char *str, int *addr);

@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:50:22 by eunji             #+#    #+#             */
-/*   Updated: 2021/12/20 20:43:06 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/22 14:07:13 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ bool	spend_time(long long start, long long timeunit)
 {
 	long long	curr;
 
-	if (!start || !get_time(&start))
-		return (false);
+	if (!start)
+		if (!get_time(&start))
+			return (false);
 	while (true)
 	{
 		if (!get_time(&curr))
