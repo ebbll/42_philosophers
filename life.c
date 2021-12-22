@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 17:22:27 by eunlee            #+#    #+#             */
-/*   Updated: 2021/12/22 13:41:46 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/22 14:12:47 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*philo_life(void *arg_philo)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg_philo;
-	if (!philo->index % 2)
+	if (philo->index % 2)
 		if (!spend_time(0, 10))
 			pthread_mutex_unlock(&(philo->info->terminate));
 	if (!get_time(&(philo->curr_time)))

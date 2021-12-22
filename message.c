@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/18 16:56:06 by eunlee            #+#    #+#             */
-/*   Updated: 2021/12/22 14:02:41 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/22 14:14:24 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ bool	print_state(t_philo *philo, t_state state)
 
 bool	print_message(t_philo *philo, t_state state)
 {
-	long long	curr;
-
 	if (pthread_mutex_lock(&(philo->info->print)))
 		return (false);
 	if (!print_state(philo, state))

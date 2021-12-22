@@ -6,7 +6,7 @@
 #    By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 14:10:10 by eunlee            #+#    #+#              #
-#    Updated: 2021/12/22 14:10:20 by eunlee           ###   ########.fr        #
+#    Updated: 2021/12/22 14:14:03 by eunlee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,19 +19,18 @@ RM		=	rm -f
 
 NAME	=	philo
 
-SRCS	=	philo.c
-			action.c
-			free.c
-			life.c
-			message.c
-			monitor.c
-			parsing.c
+SRCS	=	philo.c \
+			action.c \
+			free.c \
+			life.c \
+			message.c \
+			monitor.c \
+			parsing.c \
 			time.c
 
 OBJS	=	$(SRCS:.c=.o)
 
-all:
-	make $(NAME)
+all: $(NAME)
 
 leaks: $(OBJS)
 	$(CC) $(CFLAGS) $(LEAKS) -o $(NAME) $(OBJS)
