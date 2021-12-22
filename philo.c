@@ -6,7 +6,7 @@
 /*   By: eunlee <eunlee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 11:05:54 by eunji             #+#    #+#             */
-/*   Updated: 2021/12/22 14:09:47 by eunlee           ###   ########.fr       */
+/*   Updated: 2021/12/22 14:28:28 by eunlee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ bool	start_eating(t_info *info, t_philo *philo)
 		if (pthread_create(&(philo[i].th_monitor), NULL, monitor, \
 			(void *)(&philo[i])) || pthread_detach(philo[i].th_monitor))
 			return (false);
+		i++;
 	}
 	if (pthread_mutex_lock(&(info->terminate)))
 		return (false);
